@@ -1,4 +1,48 @@
-[gd_scene format=3 uid="uid://dd7ioqpeksvas"]
+[gd_scene load_steps=11 format=3 uid="uid://dd7ioqpeksvas"]
+
+[ext_resource type="Texture2D" uid="uid://d1qfv12lu4nfv" path="res://assets/character/Character1F_4_idle_0.png" id="1_h0mw0"]
+[ext_resource type="Texture2D" uid="uid://cbfsojomvv4n6" path="res://assets/character/Character1F_4_idle_1.png" id="2_8okav"]
+[ext_resource type="Texture2D" uid="uid://bowe6jylt0hqw" path="res://assets/character/Character1F_4_idle_2.png" id="3_t28vh"]
+[ext_resource type="Texture2D" uid="uid://cmc7mp1lehbos" path="res://assets/character/Character1F_4_idle_3.png" id="4_kssrs"]
+[ext_resource type="Texture2D" uid="uid://b1r8d4v61vhsl" path="res://assets/character/Character1F_4_idle_4.png" id="5_5jduw"]
+[ext_resource type="Texture2D" uid="uid://cvfd6llvjtmte" path="res://assets/character/Character1F_4_idle_5.png" id="6_apwom"]
+[ext_resource type="Texture2D" uid="uid://bq54s8m4w50mv" path="res://assets/character/Character1F_4_idle_6.png" id="7_ofh27"]
+[ext_resource type="Texture2D" uid="uid://dlt3wdkqci6ut" path="res://assets/character/Character1F_4_idle_7.png" id="8_oxknf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jw5hs"]
+size = Vector2(14, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvciq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h0mw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8okav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t28vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kssrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5jduw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_apwom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ofh27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oxknf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="CustomizationScene" type="Node2D"]
 
@@ -47,3 +91,17 @@ offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 30.0
 grow_horizontal = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(157, 91)
+scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jw5hs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_fvciq")
+animation = &"idle"
