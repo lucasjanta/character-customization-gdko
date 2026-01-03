@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=4 uid="uid://brvs2ignx6mmr"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h06mf"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAGAAAAAOAgAAUklGRgYCAABXRUJQVlA4TPkBAAAvf8AXEEegkJEk5hjeH6dXjWd4EyIBCNn/JSaYonNAUdO2ERQGfXiV/3bTAZn/AADQDw5us37Ek5JvQZIDwHHbSD8wgQjyvds96zktBZ69DOh7tjNrsuNrdn675IgacbovQET/Hbht40gSsH2z2iufaEaqlk5SZNKibUbW67pfkp4YW1oh0BVV8j7GpUpGka6yEl3ulYBIOPT1uy496dGa9Jmj+l2rAZMGwGNy2wl0wYQCXQ4n7Od3/YAWCNmwgyx2vK4hErfMLlsmsLrKBB6D3mYGveV3UfhdHk3Go2F3GYo3TAYLYRt2ZBK3a7zD7QoAYMOOTGJ2lQ7bP3ScfaS83czgw8OHz7JcfGUvy93jxZc5fKKczsG+3Elf8mx/5UHEDCKyuwzFI5NBa719ppPYXRRuF0L22UIWeV2FHW5XWZEuo4t6iS4LRYNM19XtOvPu9lykyyFevEHi8R6xr9+1ggm72V28hSqYFvW7VtAXI6Gr36VaOkmRSYu2qe79kvTG2NIKAaJK3se4VMkoQlkJ3CsBkXDo63PpSa/WrxlzVJ/VgEkD4DG57eYz+3ctgMMJ++9nsRj/lSZVIyuAI19j0UPhSf9BoqgOp1Qjm2o6o4v6rqmus1A0yHB1u868uz2XAfHiDRKP94h9fVYwocxCFRRaFFNdxUUDAA==")
+size_override = Vector2(128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31rhj"]
+atlas = SubResource("PortableCompressedTexture2D_h06mf")
+region = Rect2(0, 0, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wla1g"]
+atlas = SubResource("PortableCompressedTexture2D_h06mf")
+region = Rect2(0, 48, 64, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psa3u"]
+atlas = SubResource("PortableCompressedTexture2D_h06mf")
+region = Rect2(64, 0, 64, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njnrn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31rhj")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wla1g")
+}],
+"loop": true,
+"name": &"open",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31rhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psa3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wla1g")
+}],
+"loop": true,
+"name": &"opening",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h06mf"]
+radius = 34.058773
+
+[node name="wardrobe" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_njnrn")
+animation = &"closed"
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/bedroom/wardrobe.ase",
+"source_uid": 3369519370243609416
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0f3ab616298d0371c3afec15c69ae8c4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h06mf")
