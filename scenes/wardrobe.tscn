@@ -1,4 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://brvs2ignx6mmr"]
+[gd_scene load_steps=8 format=4 uid="uid://brvs2ignx6mmr"]
+
+[ext_resource type="Script" uid="uid://c2xi04wmvu0kj" path="res://scripts/wardrobe.gd" id="1_31rhj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h06mf"]
+radius = 34.058773
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_h06mf"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAGAAAAAOAgAAUklGRgYCAABXRUJQVlA4TPkBAAAvf8AXEEegkJEk5hjeH6dXjWd4EyIBCNn/JSaYonNAUdO2ERQGfXiV/3bTAZn/AADQDw5us37Ek5JvQZIDwHHbSD8wgQjyvds96zktBZ69DOh7tjNrsuNrdn675IgacbovQET/Hbht40gSsH2z2iufaEaqlk5SZNKibUbW67pfkp4YW1oh0BVV8j7GpUpGka6yEl3ulYBIOPT1uy496dGa9Jmj+l2rAZMGwGNy2wl0wYQCXQ4n7Od3/YAWCNmwgyx2vK4hErfMLlsmsLrKBB6D3mYGveV3UfhdHk3Go2F3GYo3TAYLYRt2ZBK3a7zD7QoAYMOOTGJ2lQ7bP3ScfaS83czgw8OHz7JcfGUvy93jxZc5fKKczsG+3Elf8mx/5UHEDCKyuwzFI5NBa719ppPYXRRuF0L22UIWeV2FHW5XWZEuo4t6iS4LRYNM19XtOvPu9lykyyFevEHi8R6xr9+1ggm72V28hSqYFvW7VtAXI6Gr36VaOkmRSYu2qe79kvTG2NIKAaJK3se4VMkoQlkJ3CsBkXDo63PpSa/WrxlzVJ/VgEkD4DG57eYz+3ctgMMJ++9nsRj/lSZVIyuAI19j0UPhSf9BoqgOp1Qjm2o6o4v6rqmus1A0yHB1u868uz2XAfHiDRKP94h9fVYwocxCFRRaFFNdxUUDAA==")
@@ -22,7 +27,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31rhj")
 }],
-"loop": true,
+"loop": false,
 "name": &"closed",
 "speed": 10.0
 }, {
@@ -30,7 +35,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wla1g")
 }],
-"loop": true,
+"loop": false,
 "name": &"open",
 "speed": 10.0
 }, {
@@ -44,20 +49,24 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wla1g")
 }],
-"loop": true,
+"loop": false,
 "name": &"opening",
-"speed": 10.0
+"speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h06mf"]
-radius = 34.058773
-
 [node name="wardrobe" type="Area2D"]
+script = ExtResource("1_31rhj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h06mf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_njnrn")
-animation = &"closed"
+animation = &"opening"
+autoplay = "closed"
+frame = 2
+frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "pending_changes": {},
@@ -78,5 +87,5 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "0f3ab616298d0371c3afec15c69ae8c4"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_h06mf")
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

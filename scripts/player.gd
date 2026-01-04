@@ -7,6 +7,8 @@ class_name Player
 
 enum State { IDLE, PICK, WALK }
 var state: State = State.IDLE
+var can_change_outfit : bool = false
+var wardrobe_ref : Area2D = null
 
 func _physics_process(delta):
 	_apply_gravity(delta)
@@ -28,6 +30,9 @@ func _unhandled_input(event):
 	else:
 		state = State.WALK
 		animated_sprite_2d.play("walk")
+		
+	if event.is_action_pressed("interact") and can_change_outfit:
+		wardrobe_ref.animated_sprite_2d.play("opening")
 	
 func _process_state(delta):
 	match state:
