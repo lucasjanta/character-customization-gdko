@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var change_outfit_animation = $"../ChangeOutfitAnimation"
 
 @export var speed : float = 150.0
 @export var gravity_force : float = 900.0
@@ -32,7 +33,11 @@ func _unhandled_input(event):
 		animated_sprite_2d.play("walk")
 		
 	if event.is_action_pressed("interact") and can_change_outfit:
-		wardrobe_ref.animated_sprite_2d.play("opening")
+		if wardrobe_ref.opened == false:
+			wardrobe_ref.opened = true
+			wardrobe_ref.interact_label.visible = false
+			wardrobe_ref.animated_sprite_2d.play("opening")
+			change_outfit_animation.play("start_customization")
 	
 func _process_state(delta):
 	match state:

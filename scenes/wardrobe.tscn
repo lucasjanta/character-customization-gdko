@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://brvs2ignx6mmr"]
+[gd_scene load_steps=9 format=4 uid="uid://brvs2ignx6mmr"]
 
 [ext_resource type="Script" uid="uid://c2xi04wmvu0kj" path="res://scripts/wardrobe.gd" id="1_31rhj"]
+[ext_resource type="FontFile" uid="uid://xx414f6k2npi" path="res://assets/fonts/m6x11plus.ttf" id="2_wla1g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h06mf"]
 radius = 34.058773
@@ -34,6 +35,20 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wla1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psa3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31rhj")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wla1g")
 }],
 "loop": false,
 "name": &"open",
@@ -61,12 +76,11 @@ script = ExtResource("1_31rhj")
 shape = SubResource("CircleShape2D_h06mf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.6509804, 1, 1, 1)
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_njnrn")
-animation = &"opening"
+animation = &"closed"
 autoplay = "closed"
-frame = 2
-frame_progress = 1.0
 metadata/_aseprite_wizard_interface_config_ = {
 "layer_section": true,
 "pending_changes": {},
@@ -86,6 +100,22 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 3369519370243609416
 }
 metadata/_aseprite_wizard_source_file_hash_ = "0f3ab616298d0371c3afec15c69ae8c4"
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_top = -49.0
+offset_right = 39.0
+offset_bottom = -37.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0.42745098, 0, 0.5921569, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_wla1g")
+theme_override_font_sizes/font_size = 12
+text = "Change Outfit [E]"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
