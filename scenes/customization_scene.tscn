@@ -1,8 +1,35 @@
-[gd_scene load_steps=38 format=4 uid="uid://dd7ioqpeksvas"]
+[gd_scene load_steps=45 format=4 uid="uid://dd7ioqpeksvas"]
 
 [ext_resource type="Script" uid="uid://msq5l1qhmott" path="res://scripts/player.gd" id="1_72id1"]
+[ext_resource type="Texture2D" uid="uid://cs367e0e2tp84" path="res://assets/ui/SolidArrow-Left.png" id="1_541u6"]
 [ext_resource type="Texture2D" uid="uid://cyolxrywygude" path="res://assets/bedroom/The Sidescroller's Dungeon Tiles 32x32.png" id="1_urhmh"]
+[ext_resource type="Texture2D" uid="uid://cosld27smo1jn" path="res://assets/ui/SolidArrow-Right.png" id="2_8o7up"]
 [ext_resource type="PackedScene" uid="uid://brvs2ignx6mmr" path="res://scenes/wardrobe.tscn" id="3_kgx4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5stth"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_541u6"]
+bg_color = Color(1, 1, 1, 0.24705882)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8o7up"]
+bg_color = Color(1, 1, 1, 0.24705882)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5stth"]
+bg_color = Color(0, 0, 1, 0.36862746)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0mw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_541u6"]
 texture = ExtResource("1_urhmh")
@@ -918,6 +945,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(2, 2)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CustomizationUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CustomizationUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kgx4p"]
 length = 0.001
@@ -932,6 +983,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CustomizationUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CustomizationUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_541u6"]
@@ -950,6 +1025,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(2, 2), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CustomizationUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CustomizationUI:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kgx4p"]
 _data = {
@@ -963,6 +1062,8 @@ _data = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CustomizationUI" type="Control" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -979,11 +1080,102 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -57.0
+offset_top = -52.0
 offset_right = 100.0
-offset_bottom = -27.0
+offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5stth")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CustomizationUI/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="previousButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("1_541u6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="nextButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("2_8o7up")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="previousButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("1_541u6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="nextButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("2_8o7up")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="previousButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("1_541u6")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="nextButton" type="Button" parent="CanvasLayer/CustomizationUI/PanelContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_541u6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8o7up")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5stth")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0mw0")
+icon = ExtResource("2_8o7up")
+icon_alignment = 1
+expand_icon = true
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//wgAAAABAAwAAAD//wkAAAABAA0AAAD//woAAAABAA4AAAD//wsAAAABAA8AAAD//wwAAAABABAAAAD//w0AAAAAAAUAAAD//w4AAAAAAAYAAAAAAAgAAAACAA0AAAAAAAkAAAACAA4AAAAAAAoAAAACAA8AAAAAAAsAAAACABAAAAAAAAwAAAABAAQAAAAAAA0AAAABAAUAAAAAAA4AAAABAAYAAAABAAgAAAADAA0AAAABAAkAAAADAA4AAAACAAgAAAAEAA0AAAACAAkAAAAEAA4AAAADAAgAAAAFAA0AAAADAAkAAAAFAA4AAAAEAAgAAAACAA0AAAAEAAkAAAACAA4AAAAFAAgAAAADAA0AAAAFAAkAAAADAA4AAAAGAAgAAAAEAA0AAAAGAAkAAAAEAA4AAAAHAAgAAAAFAA0AAAAHAAkAAAAFAA4AAAAIAAgAAAACAA0AAAAIAAkAAAACAA4AAAAJAAgAAAADAA0AAAAJAAkAAAADAA4AAAAKAAgAAAAEAA0AAAAKAAkAAAAEAA4AAAALAAgAAAAFAA0AAAALAAkAAAAFAA4AAAAMAAgAAAACAA0AAAAMAAkAAAACAA4AAAANAAgAAAADAA0AAAANAAkAAAADAA4AAAAOAAgAAAAEAA0AAAAOAAkAAAAEAA4AAAAPAAgAAAAFAA0AAAAPAAkAAAAFAA4AAAAQAAgAAAACAA0AAAAQAAkAAAACAA4AAAARAAgAAAADAA0AAAARAAkAAAADAA4AAAASAAgAAAAEAA0AAAASAAkAAAAEAA4AAAATAAgAAAAFAA0AAAATAAkAAAAFAA4AAAAUAAgAAAACAA0AAAAUAAkAAAACAA4AAAABAAoAAAADAA8AAAABAAsAAAADABAAAAABAAwAAAACAAMAAAABAA0AAAACAAQAAAACAAoAAAAEAA8AAAACAAsAAAAEABAAAAACAAwAAAADAAMAAAACAA0AAAADAAQAAAADAAoAAAAFAA8AAAADAAsAAAAFABAAAAADAAwAAAAEAAMAAAADAA0AAAAEAAQAAAAEAAoAAAACAA8AAAAEAAsAAAACABAAAAAEAAwAAAAFAAMAAAAEAA0AAAAFAAQAAAAFAAoAAAADAA8AAAAFAAsAAAADABAAAAAFAAwAAAACAAMAAAAFAA0AAAACAAQAAAAGAAoAAAAEAA8AAAAGAAsAAAAEABAAAAAGAAwAAAADAAMAAAAGAA0AAAADAAQAAAAHAAoAAAAFAA8AAAAHAAsAAAAFABAAAAAHAAwAAAAEAAMAAAAHAA0AAAAEAAQAAAAIAAoAAAACAA8AAAAIAAsAAAACABAAAAAIAAwAAAAFAAMAAAAIAA0AAAAFAAQAAAAJAAoAAAADAA8AAAAJAAsAAAADABAAAAAJAAwAAAACAAMAAAAJAA0AAAACAAQAAAAKAAoAAAAEAA8AAAAKAAsAAAAEABAAAAAKAAwAAAADAAMAAAAKAA0AAAADAAQAAAALAAoAAAAFAA8AAAALAAsAAAAFABAAAAALAAwAAAAEAAMAAAALAA0AAAAEAAQAAAAMAAoAAAACAA8AAAAMAAsAAAACABAAAAAMAAwAAAAFAAMAAAAMAA0AAAAFAAQAAAANAAoAAAADAA8AAAANAAsAAAADABAAAAANAAwAAAACAAMAAAANAA0AAAACAAQAAAAOAAoAAAAEAA8AAAAOAAsAAAAEABAAAAAOAAwAAAADAAMAAAAOAA0AAAADAAQAAAAPAAoAAAAFAA8AAAAPAAsAAAAFABAAAAAPAAwAAAAEAAMAAAAPAA0AAAAEAAQAAAAQAAoAAAACAA8AAAAQAAsAAAACABAAAAAQAAwAAAAFAAMAAAAQAA0AAAAFAAQAAAARAAoAAAADAA8AAAARAAsAAAADABAAAAARAAwAAAACAAMAAAARAA0AAAACAAQAAAASAAoAAAAEAA8AAAASAAsAAAAEABAAAAASAAwAAAADAAMAAAASAA0AAAADAAQAAAATAAoAAAAFAA8AAAATAAsAAAAFABAAAAATAAwAAAAEAAMAAAATAA0AAAAEAAQAAAAUAAoAAAACAA8AAAAUAAsAAAACABAAAAAUAAwAAAAFAAMAAAAUAA0AAAAFAAQAAAABAA4AAAACAAUAAAACAA4AAAADAAUAAAADAA4AAAAEAAUAAAAEAA4AAAAFAAUAAAAFAA4AAAACAAUAAAAGAA4AAAADAAUAAAAHAA4AAAAEAAUAAAAIAA4AAAAFAAUAAAAJAA4AAAACAAUAAAAKAA4AAAADAAUAAAALAA4AAAAEAAUAAAAMAA4AAAAFAAUAAAANAA4AAAACAAUAAAAOAA4AAAADAAUAAAAPAA4AAAAEAAUAAAAQAA4AAAAFAAUAAAARAA4AAAACAAUAAAASAA4AAAADAAUAAAATAA4AAAAEAAUAAAAUAA4AAAAFAAUAAAD+/wAAAAAAAAsAAAD+/wEAAAAAAAsAAAD+/wIAAAAAAAwAAAD+/wMAAAAAAA0AAAD+/wQAAAAAAA4AAAD+/wUAAAAAAA8AAAD+/wYAAAAAABAAAAD+/wcAAAAAAAsAAAD//wAAAAABAAsAAAD//wEAAAABAAsAAAD//wIAAAABAAwAAAD//wMAAAABAA0AAAD//wQAAAABAA4AAAD//wUAAAABAA8AAAD//wYAAAABABAAAAD//wcAAAABAAsAAAD+/wgAAAAAAAwAAAD+/wkAAAAAAA0AAAD+/woAAAAAAA4AAAD+/wsAAAAAAA8AAAD+/wwAAAAAABAAAAD+////AAAAAAoAAAD/////AAABAAoAAAAAAAAAAAACAAsAAAAAAAEAAAACAAwAAAAAAAIAAAACAA0AAAAAAAMAAAACAA4AAAAAAAQAAAACAA8AAAAAAAUAAAACABAAAAABAAAAAAADAAsAAAABAAEAAAADAAwAAAABAAIAAAADAA0AAAABAAMAAAADAA4AAAABAAQAAAADAA8AAAABAAUAAAADABAAAAACAAAAAAAEAAsAAAACAAEAAAAEAAwAAAACAAIAAAAEAA0AAAACAAMAAAAEAA4AAAACAAQAAAAEAA8AAAACAAUAAAAEABAAAAADAAAAAAAFAAsAAAADAAEAAAAFAAwAAAADAAIAAAAFAA0AAAADAAMAAAAFAA4AAAADAAQAAAAFAA8AAAADAAUAAAAFABAAAAAEAAAAAAACAAsAAAAEAAEAAAACAAwAAAAEAAIAAAACAA0AAAAEAAMAAAACAA4AAAAEAAQAAAACAA8AAAAEAAUAAAACABAAAAAFAAAAAAADAAsAAAAFAAEAAAADAAwAAAAFAAIAAAADAA0AAAAFAAMAAAADAA4AAAAFAAQAAAADAA8AAAAFAAUAAAADABAAAAAGAAAAAAAEAAsAAAAGAAEAAAAEAAwAAAAGAAIAAAAEAA0AAAAGAAMAAAAEAA4AAAAGAAQAAAAEAA8AAAAGAAUAAAAEABAAAAAHAAAAAAAFAAsAAAAHAAEAAAAFAAwAAAAHAAIAAAAFAA0AAAAHAAMAAAAFAA4AAAAHAAQAAAAFAA8AAAAHAAUAAAAFABAAAAAIAAAAAAACAAsAAAAIAAEAAAACAAwAAAAIAAIAAAACAA0AAAAIAAMAAAACAA4AAAAIAAQAAAACAA8AAAAIAAUAAAACABAAAAAJAAAAAAADAAsAAAAJAAEAAAADAAwAAAAJAAIAAAADAA0AAAAJAAMAAAADAA4AAAAJAAQAAAADAA8AAAAJAAUAAAADABAAAAAKAAAAAAAEAAsAAAAKAAEAAAAEAAwAAAAKAAIAAAAEAA0AAAAKAAMAAAAEAA4AAAAKAAQAAAAEAA8AAAAKAAUAAAAEABAAAAALAAAAAAAFAAsAAAALAAEAAAAFAAwAAAALAAIAAAAFAA0AAAALAAMAAAAFAA4AAAALAAQAAAAFAA8AAAALAAUAAAAFABAAAAAMAAAAAAACAAsAAAAMAAEAAAACAAwAAAAMAAIAAAACAA0AAAAMAAMAAAACAA4AAAAMAAQAAAACAA8AAAAMAAUAAAACABAAAAANAAAAAAADAAsAAAANAAEAAAADAAwAAAANAAIAAAADAA0AAAANAAMAAAADAA4AAAANAAQAAAADAA8AAAANAAUAAAADABAAAAAOAAAAAAAEAAsAAAAOAAEAAAAEAAwAAAAOAAIAAAAEAA0AAAAOAAMAAAAEAA4AAAAOAAQAAAAEAA8AAAAOAAUAAAAEABAAAAAPAAAAAAAFAAsAAAAPAAEAAAAFAAwAAAAPAAIAAAAFAA0AAAAPAAMAAAAFAA4AAAAPAAQAAAAFAA8AAAAPAAUAAAAFABAAAAAQAAAAAAACAAsAAAAQAAEAAAACAAwAAAAQAAIAAAACAA0AAAAQAAMAAAACAA4AAAAQAAQAAAACAA8AAAAQAAUAAAACABAAAAARAAAAAAADAAsAAAARAAEAAAADAAwAAAARAAIAAAADAA0AAAARAAMAAAADAA4AAAARAAQAAAADAA8AAAARAAUAAAADABAAAAASAAAAAAAEAAsAAAASAAEAAAAEAAwAAAASAAIAAAAEAA0AAAASAAMAAAAEAA4AAAASAAQAAAAEAA8AAAASAAUAAAAEABAAAAATAAAAAAAFAAsAAAATAAEAAAAFAAwAAAATAAIAAAAFAA0AAAATAAMAAAAFAA4AAAATAAQAAAAFAA8AAAATAAUAAAAFABAAAAAUAAAAAAACAAsAAAAUAAEAAAACAAwAAAAUAAIAAAACAA0AAAAUAAMAAAACAA4AAAAUAAQAAAACAA8AAAAUAAUAAAACABAAAAAVAAAAAAADAAsAAAAVAAEAAAADAAwAAAAVAAIAAAADAA0AAAAVAAMAAAADAA4AAAAVAAQAAAADAA8AAAAVAAUAAAADABAAAAAWAAAAAAAEAAsAAAAWAAEAAAAEAAwAAAAWAAIAAAAEAA0AAAAWAAMAAAAEAA4AAAAWAAQAAAAEAA8AAAAWAAUAAAAEABAAAAAXAAAAAAAFAAsAAAAXAAEAAAAFAAwAAAAXAAIAAAAFAA0AAAAXAAMAAAAFAA4AAAAXAAQAAAAFAA8AAAAXAAUAAAAFABAAAAAAAAYAAAACAAsAAAAAAAcAAAACAAwAAAABAAYAAAADAAsAAAABAAcAAAADAAwAAAACAAYAAAAEAAsAAAACAAcAAAAEAAwAAAADAAYAAAAFAAsAAAADAAcAAAAFAAwAAAAEAAYAAAACAAsAAAAEAAcAAAACAAwAAAAFAAYAAAADAAsAAAAFAAcAAAADAAwAAAAGAAYAAAAEAAsAAAAGAAcAAAAEAAwAAAAHAAYAAAAFAAsAAAAHAAcAAAAFAAwAAAAIAAYAAAACAAsAAAAIAAcAAAACAAwAAAAJAAYAAAADAAsAAAAJAAcAAAADAAwAAAAKAAYAAAAEAAsAAAAKAAcAAAAEAAwAAAALAAYAAAAFAAsAAAALAAcAAAAFAAwAAAAMAAYAAAACAAsAAAAMAAcAAAACAAwAAAANAAYAAAADAAsAAAANAAcAAAADAAwAAAAOAAYAAAAEAAsAAAAOAAcAAAAEAAwAAAAPAAYAAAAFAAsAAAAPAAcAAAAFAAwAAAAQAAYAAAACAAsAAAAQAAcAAAACAAwAAAARAAYAAAADAAsAAAARAAcAAAADAAwAAAASAAYAAAAEAAsAAAASAAcAAAAEAAwAAAATAAYAAAAFAAsAAAATAAcAAAAFAAwAAAAUAAYAAAACAAsAAAAUAAcAAAACAAwAAAAVAAYAAAADAAsAAAAVAAcAAAADAAwAAAAVAAgAAAADAA0AAAAVAAkAAAADAA4AAAAVAAoAAAADAA8AAAAVAAsAAAADABAAAAAWAAYAAAAEAAsAAAAWAAcAAAAEAAwAAAAWAAgAAAAEAA0AAAAWAAkAAAAEAA4AAAAWAAoAAAAEAA8AAAAWAAsAAAAEABAAAAAXAAYAAAAFAAsAAAAXAAcAAAAFAAwAAAAXAAgAAAAFAA0AAAAXAAkAAAAFAA4AAAAXAAoAAAAFAA8AAAAXAAsAAAAFABAAAAAAAP//AAACAAoAAAABAP//AAADAAoAAAACAP//AAAEAAoAAAADAP//AAAFAAoAAAAEAP//AAACAAoAAAAFAP//AAADAAoAAAAGAP//AAAEAAoAAAAHAP//AAAFAAoAAAAIAP//AAACAAoAAAAJAP//AAADAAoAAAAKAP//AAAEAAoAAAALAP//AAAFAAoAAAAMAP//AAACAAoAAAANAP//AAADAAoAAAAOAP//AAAEAAoAAAAPAP//AAAFAAoAAAAQAP//AAACAAoAAAARAP//AAADAAoAAAASAP//AAAEAAoAAAATAP//AAAFAAoAAAAUAP//AAACAAoAAAAVAP//AAADAAoAAAAWAP//AAAEAAoAAAAXAP//AAAFAAoAAAAYAP//AAAGAAoAAAAYAAAAAAAGAAsAAAAYAAEAAAAGAAwAAAAYAAIAAAAGAA0AAAAYAAMAAAAGAA4AAAAYAAQAAAAGAA8AAAAYAAUAAAAGABAAAAAZAP//AAAHAAoAAAAZAAAAAAAHAAsAAAAZAAEAAAAHAAwAAAAZAAIAAAAHAA0AAAAZAAMAAAAHAA4AAAAZAAQAAAAHAA8AAAAZAAUAAAAHABAAAAAYAAYAAAAGAAsAAAAYAAcAAAAGAAwAAAAYAAgAAAAGAA0AAAAYAAkAAAAGAA4AAAAYAAoAAAAGAA8AAAAYAAsAAAAGABAAAAAZAAYAAAAHAAsAAAAZAAcAAAAHAAwAAAAZAAgAAAAHAA0AAAAZAAkAAAAHAA4AAAAZAAoAAAAHAA8AAAAZAAsAAAAHABAAAAA=")

@@ -1,6 +1,7 @@
 extends Area2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var interact_label = $InteractLabel
+@onready var change_outfit_animation = $"../ChangeOutfitAnimation"
 
 var opened : bool = false
 
@@ -18,5 +19,6 @@ func _on_body_exited(body):
 		if opened:
 			animated_sprite_2d.play("closing")
 			opened = false
+			change_outfit_animation.play("end_customization")
 			
 			
