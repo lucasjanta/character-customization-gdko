@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bkub256w4bu3g"]
+[gd_scene load_steps=33 format=4 uid="uid://bkub256w4bu3g"]
 
 [ext_resource type="Script" uid="uid://msq5l1qhmott" path="res://scripts/player.gd" id="1_3vyb7"]
 
@@ -208,6 +208,12 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vyb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qhqgy"]
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_3vyb7")
@@ -243,3 +249,12 @@ metadata/_aseprite_wizard_source_file_hash_ = "9b5370d6fa2cdd973a11fc62e8c7e592"
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
 limit_right = 320
+
+[node name="top" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3vyb7")
+
+[node name="bottom" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g2els")
+
+[node name="shoes" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qhqgy")
