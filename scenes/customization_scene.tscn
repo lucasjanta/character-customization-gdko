@@ -987,7 +987,7 @@ tile_map_data = PackedByteArray("AAD//wgAAAAAAAAAAAD//wkAAAAAAAEAAAD//woAAAAAAAI
 tile_set = SubResource("TileSet_8o7up")
 
 [node name="wardrobe" parent="." instance=ExtResource("3_kgx4p")]
-position = Vector2(158, 98)
+position = Vector2(155, 98)
 scale = Vector2(1.5, 1.5)
 
 [node name="Player" parent="." instance=ExtResource("5_541u6")]
