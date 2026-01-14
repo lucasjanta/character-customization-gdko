@@ -999,7 +999,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "7baa3152c91a79a39774bb12fd57f13d"
 
-[node name="red_shoes2" type="AnimatedSprite2D" parent="."]
+[node name="black_shoes" type="AnimatedSprite2D" parent="."]
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8txt3")

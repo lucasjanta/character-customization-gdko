@@ -3,6 +3,13 @@ class_name Player
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var change_outfit_animation = $"../ChangeOutfitAnimation"
 
+@onready var pink_top = $pink_top
+@onready var black_top = $black_top
+@onready var light_blue_bottom = $light_blue_bottom
+@onready var dark_blue_bottom = $dark_blue_bottom
+@onready var red_shoes = $red_shoes
+@onready var black_shoes = $black_shoes
+
 @export var speed : float = 150.0
 @export var gravity_force : float = 900.0
 
@@ -28,9 +35,22 @@ func _unhandled_input(event):
 	if horizontal_movement == 0:
 		state = State.IDLE
 		animated_sprite_2d.play("idle")
+		pink_top.play("idle")
+		black_top.play("idle")
+		light_blue_bottom.play("idle")
+		dark_blue_bottom.play("idle")
+		red_shoes.play("idle")
+		black_shoes.play("idle")
+		
 	else:
 		state = State.WALK
 		animated_sprite_2d.play("walk")
+		pink_top.play("walk")
+		black_top.play("walk")
+		light_blue_bottom.play("walk")
+		dark_blue_bottom.play("walk")
+		red_shoes.play("walk")
+		black_shoes.play("walk")
 		
 	if event.is_action_pressed("interact") and can_change_outfit:
 		if wardrobe_ref.opened == false:
@@ -49,6 +69,18 @@ func _process_state(delta):
 			velocity.x = speed * dir
 			if dir > 0:
 				animated_sprite_2d.flip_h = false
+				pink_top.flip_h = false
+				black_top.flip_h = false
+				light_blue_bottom.flip_h = false
+				dark_blue_bottom.flip_h = false
+				red_shoes.flip_h = false
+				black_shoes.flip_h = false
 			elif dir < 0:
 				animated_sprite_2d.flip_h = true
+				pink_top.flip_h = true
+				black_top.flip_h = true
+				light_blue_bottom.flip_h = true
+				dark_blue_bottom.flip_h = true
+				red_shoes.flip_h = true
+				black_shoes.flip_h = true
 				
